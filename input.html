@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Creative - Start Bootstrap Theme</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="main.css" rel="stylesheet">
+
+    <script>
+      var countBoxMaterial = 1;
+      var boxNameMaterial = "";
+      var countBoxTask = 1;
+      var countBoxTime = 1;
+      var boxNameTask = "";
+      var boxNameTime = "";
+    	var materialTime = "";
+    	var taskName = "";
+    	var taskTime = "";
+    	
+      function addInputMaterial()
+      {
+          countBoxMaterial += 1;
+          var boxNameMaterial="Material-"+countBoxMaterial;
+          document.getElementById('responce1').innerHTML+='<br/><input type="number" id="'+boxNameMaterial+'" placeholder="'+boxNameMaterial+'" "  /><br/>';
+      }
+      function addInputTask()
+      {
+    	 countBoxTask = countBoxTask+ 1;
+         var boxNameTask="Task-"+countBoxTask;
+         document.getElementById('responce2').innerHTML+='<br/><input type="text" id="'+boxNameTask+'" placeholder="'+boxNameTask+'"  /><br/>';
+         var boxNameTime="Time-"+countBoxTask;
+         document.getElementById('responce3').innerHTML+='<br/><input type="number" id="'+boxNameTask+'" placeholder="'+boxNameTask+'"  /><br/>';
+      }
+	
+	//AJAX submisstion function
+	function submitData() {
+		//Material Time Loop
+		for(var i = 1; i <= countBoxMaterial; i++){
+			var element = document.getElementById("Material-"+i).value;
+			materialTime = materialTime + element + ",";
+		}
+
+		//Task Loop
+		for(var j = 1; j <= countBoxTask; j++){
+			var element1 = document.getElementById("Task-"+j).value;
+			taskName = taskName + element1 + ",";
+			
+   	    //alert(countBoxTask);			
+		for(var k = 1; k <= countBoxTime; k++){
+			var element2 = document.getElementById("Time-"+k).value;
+			taskTime = taskTime + element2 + ",";
+		}
+			alert(element2);
+	}
+		alert(materialTime + "<br/>" + taskName + "<br/>" + taskTime);
+		
+		/*var xhttp;    
+		xhttp = new XMLHttpRequest();
+		xhttp.open("POST", "algortihm.php", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send("mt="+materialTime+"&tn="+taskName+"&tt="+taskTime);*/
+		
+	}
+//    function materialString()
+//    {
+//      var mstr = [];
+//      for (i = 0, i < countBoxMaterial; i++)
+//      {
+//        mstr.push(document.getElementById("Material-1").value;);
+//      }
+//      return mstr;
+//    }
+//   document.getElementById("michelle").innerHTML = materialString;
+    </script>
+  </head>
+  <body>
+    <div id= "leftDiv">
+      <input type="button" onclick="addInputMaterial()" value="Add"/>
+      <br>
+      <span id="responce1">
+        <input type="number" id="Material-1" placeholder="Material-1">
+        <br>
+      </span>
+      <br>
+    </div>
+    <div id= "rightDiv">
+      <table>
+        <tr>
+          <td>
+             <input type="button" onclick="addInputTask()" value="Add"/>
+          </td>
+        </tr>
+      </table>
+        <!-- <tr>
+          <td> -->
+            <div id="responce2">
+              <input type="text" placeholder="Task-1" id="Task-1"/>
+              <br>
+            </div>
+          <!-- </td>
+          <td> -->
+            <div id="responce3">
+              <input type="number" placeholder="Time-1" id="Time-1"/>
+              <br>
+            </div>
+          <!-- </td>
+        </tr> -->
+        <p id="michelle">
+        </p>
+    </div>
+   <input type="button" onclick="submitData()" value="Submit"/>
+ 
+  </body>
+</html>
